@@ -2,21 +2,20 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-// Your ExchangeRate-API key (from https://www.exchangerate-api.com/)
 const API_KEY = 'a63500049dcbf27c3bb5831d'
 const BASE_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}`
 
 function App() {
-  // ---- State variables ----
-  const [currencies, setCurrencies] = useState([]) // list of [code, name] pairs
+
+  const [currencies, setCurrencies] = useState([])
   const [amount, setAmount] = useState(1)
   const [fromCurrency, setFromCurrency] = useState('USD')
   const [toCurrency, setToCurrency] = useState('INR')
-  const [result, setResult] = useState(null) // { rate, convertedAmount }
+  const [result, setResult] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // ---- Fetch the currency list once, when the component first loads ----
+
   useEffect(() => {
     fetch(`${BASE_URL}/codes`)
       .then((res) => res.json())
@@ -30,7 +29,7 @@ function App() {
       .catch(() => setError('Could not load currency list'))
   }, [])
 
-  // ---- Handle the "Convert" button click ----
+
   const handleConvert = async () => {
     setError('')
     setResult(null)
@@ -62,7 +61,7 @@ function App() {
     }
   }
 
-  // ---- Swap the "from" and "to" currencies ----
+
   const handleSwap = () => {
     setFromCurrency(toCurrency)
     setToCurrency(fromCurrency)
