@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import sum from './assets/sum.js'
 import './App.css'
 
@@ -12,7 +11,7 @@ function App() {
       total += i;
     }
     return total;
-  })
+  }, [])
 
   return (
     <>
