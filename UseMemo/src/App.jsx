@@ -12,7 +12,9 @@ function App() {
   return (
     <>
       <h2>Count: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <button className="button" onClick={() => setCount(count + 1)}>
+        Increment Count
+      </button>
       <h2>Total Sum: {total}</h2>
     </>
   )
