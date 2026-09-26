@@ -1,10 +1,6 @@
 class Vehicle {
     protected String brand;
 
-    public Vehicle() {
-        this.brand = "Ford";
-    }
-
     public Vehicle(String brand) {
         this.brand = brand;
     }
@@ -15,7 +11,7 @@ class Vehicle {
 }
 
 class Car extends Vehicle {
-    private String modelName;
+    private final String modelName;
 
     public Car(String modelName, String brand) {
         super(brand);
