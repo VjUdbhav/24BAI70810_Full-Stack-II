@@ -9,9 +9,5 @@ public class StringPractice {
         StringBuilder sb = new StringBuilder("Hello");
         sb.append(" World");
         System.out.println("StringBuilder: " + sb.toString());
-
-        StringBuffer sbf = new StringBuffer("Hello");
-        sbf.append(" World");
-        System.out.println("StringBuffer: " + sbf.toString());
     }
 }
