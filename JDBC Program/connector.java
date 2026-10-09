@@ -1,26 +1,31 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class connector {
+    public static void main(String[] args) throws Exception {
+//        Class.forName("org.postgresql.Driver");
 
-    public static void main(String[] args) {
 
-        String url = "jdbc:mysql://localhost:3306/St_Fs";
-        String user = "udbhavvj";
-        String password = "Udbhavvj2006";
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
-        try {
-            Connection con = DriverManager.getConnection(url, user, password);
-
-            System.out.println("Connected to MySQL successfully!");
-
-            con.close();
-            System.out.println("Connection closed.");
-
-        } catch (SQLException e) {
-            System.out.println("Connection failed!");
-            e.printStackTrace();
+        try (Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/st_fs",
+                "udbhavvj",
+                "Udbhavvj2006"
+        )) {
+            Statement executor = con.createStatement();
+            
+            String query = "select * from student;";
+            ResultSet rs = executor.executeQuery(query);
+            while (rs.next()) {
+                System.out.println(rs.getString("name"));
+            }
+            
+            System.out.println("Connected!");
         }
+
+
     }
 }
